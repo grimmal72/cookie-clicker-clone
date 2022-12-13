@@ -6,9 +6,18 @@
     color: white;
 }
 
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ }
+
 #columns {
     display: flex;
     justify-content: space-between;
+    height: 100vh;
 }
 
 #first-column {
@@ -25,23 +34,43 @@
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    background-color: brown;
+    overflow: hidden;
+    overflow-y: scroll;
 }
+
+#third-column > * {
+    background-color: brown;
+    width: 100%;
+}
+
+#auto-bakers-heading,
+#grandmas-heading,
+#cookie-farms-heading,
+#cookie-mines-heading,
+#cookie-factories-heading {
+    background-color: brown;
+}
+
 
 h1 {
     padding-top: 15px;
 }
 
-button {
+.button {
     background-color: #3498db;
     color: white;
     border: 2px solid white;
     font-size: 1.7rem;
     padding: 2rem 3rem;
-    border-radius: 60%;
+    width: 100%;
     transition: all 0.5s ease-in-out;
     cursor: pointer;
+
+    font-family: 'Heuristica', Georgia, 'Times New Roman', Times, serif;
+    font-weight: 1000;
 }
-button:hover {
+.button:hover {
     background: white;
     color: #3498db;
     border: 2px solid white;
