@@ -1,37 +1,39 @@
 // Accessing DOM elements
-const clickHeading = document.querySelector("#click-heading");
+const cookieHeading = document.querySelector("#cookie-heading");
 const autoHeading = document.querySelector("#auto-heading");
-const clickButton = document.querySelector("#click-button");
+const cookieButton = document.querySelector("#cookie-button");
 const autoButton = document.querySelector("#auto-button");
 
 // Game variables
-let clicks = 0;
+let cookies = 0;
 let cost = 5;
-let clicksPerSecond = 0;
-let autoClickerAmount = 0;
+let cookiesPerSecond = 0;
+let autoBakerAmount = 0;
 
 // Event listener
-clickButton.addEventListener("click", function() {
-    clicks += 1;
-    clickHeading.innerHTML = `Clicks: ${clicks}`;
+cookieButton.addEventListener("click", function() {
+    cookies += 1;
+    cookieHeading.innerHTML = `Clicks: ${clicks}`;
 });
 
 autoButton.addEventListener("click", () => {
-    if(clicks >= 5) {
-        clicks -= 5;
-        clicksPerSecond += 1;
-        autoClickerAmount += 1;
+    if(cookies >= 5) {
+        cookies -= 5;
+        cookiesPerSecond += 1;
+        autoBakerAmount += 1;
     }
 });
 
 // Functions
-function autoClicker() {
-    clicks += clicksPerSecond;
+function autoBaker() {
+    cookies += cookiesPerSecond;
 }
 
 // Game loop
 window.setInterval(function () {
-    autoClicker();
-    clickHeading.innerHTML = `Clicks: ${clicks}`;
-    autoHeading.innerHTML = `Autoclickers: ${autoClickerAmount}`;
+    autoBaker();
+    cookieHeading.innerHTML = `Cookies: ${cookies}`;
+    autoHeading.innerHTML = `Autobakers: ${autoBakerAmount}`;
 }, 500);
+
+// experiment: lets try to add a second buy option
