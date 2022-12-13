@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color:black;
     color: white;
 }
 
@@ -12,6 +11,10 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+ }
+
+ body {
+    background-color:black;
  }
 
 #columns {
@@ -30,10 +33,13 @@
 
 #third-column {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+
     min-height: 100vh;
+    width: 30vw;
+
     background-color: brown;
     overflow: hidden;
     overflow-y: scroll;
@@ -50,11 +56,6 @@
 #cookie-mines-heading,
 #cookie-factories-heading {
     background-color: brown;
-}
-
-
-h1 {
-    padding-top: 15px;
 }
 
 .button {
@@ -74,4 +75,23 @@ h1 {
     background: white;
     color: #3498db;
     border: 2px solid white;
+}
+
+#cookie-button {
+    max-height: 50vmin;
+    transform: rotate(35deg);
+
+    animation-name: clockwise;
+    animation-duration: 25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes clockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
