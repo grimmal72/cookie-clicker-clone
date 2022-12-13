@@ -24,7 +24,7 @@ There are currently two header-1 h1 elements that represent the counters. They s
 
 
 // Low-level non-surface-level description of these features I want to add
-For column 3, put everything in a div tag, probably with flexbox. Add div tags inside of that for all of the upgrades, which will be rectangle rows. Each rectangle on top of the other.
+For column 3, put everything in a div tag, probably with flexbox. Add div tags inside of that for all of the upgrades, which will be rectangle rows. Each rectangle on top of the other. Put text and variables inside of each of these square divs, evoking what it is you're buying. If not available due to lack of funds, use a conditional in the "click" event listener to bar access.
 
 
 
