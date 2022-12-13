@@ -6,7 +6,20 @@
     color: white;
 }
 
-div {
+#columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+#first-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#third-column {
     display: flex;
     justify-content: center;
     align-items: center;
