@@ -78,13 +78,21 @@
 }
 
 #cookie-button {
-    max-height: 50vmin;
+    height: 50vmin;
+    width: 50vmin;
     transform: rotate(35deg);
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
 
     animation-name: clockwise;
     animation-duration: 25s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+#cookie-button:hover {
+    height: 52vmin;
+    width: 52vmin;
 }
 
 @keyframes clockwise {
