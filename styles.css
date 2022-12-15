@@ -12,12 +12,11 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
- }
+}
 
- body {
-    background-color:black;
+body {
     max-height: 100vh;
- }
+}
 
 #columns {
     display: flex;
@@ -32,27 +31,61 @@
     flex-direction: column;
     width: 25vw;
     max-height: 100vh;
-
-    /*background-image: url("seamless-cookie.jpg");
-    background-repeat: repeat;*/
 }
+
 
 #scrolldown-cookie {
     position: absolute;
-    left: 0px;
-    top: 0px;
     z-index: -1;
     
-    animation-name: scrolldown;
-    animation-duration: 30s;
+    background-image: url("seamless-cookie.png");
+    width: 100%;
+    height: 100%;
+    background-position: 0 100%, 0 0;
+    background-repeat: repeat;
+    animation: animatedBackground 12s linear infinite;
+}
+  
+@keyframes animatedBackground {
+    from {
+        background-position: 0 100%, 0 0;
+    }
+    to {
+        background-position: 0 0, 0 -100%;
+    }
+}
+
+#cookie-button {
+    height: 50vmin;
+    width: 50vmin;
+
+    cursor: pointer;
+
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+
+    animation-name: clockwise;
+    animation-duration: 25s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
-@keyframes scrolldown {
-    from {top: 0%;}
-    to {top: 100%;}
-  }
+#cookie-button:hover {
+    transition: 0.1s ease-in-out;
+    height: 52vmin;
+    width: 52vmin;
+}
+
+@keyframes clockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 #second-column {
     background-color: grey;
@@ -69,6 +102,7 @@
     width: 30vw;
 
     overflow: visible;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
@@ -101,35 +135,32 @@
     border: 2px solid white;
 }
 
-#cookie-button {
-    height: 50vmin;
-    width: 50vmin;
+#upgrades-div {
+    --upgrade-size: 70px;
 
-    transform: rotate(35deg);
-    transition: 0.1s ease-in-out;
-    cursor: pointer;
+    display: flex;
 
     position: relative;
     left: 0px;
     top: 0px;
-    z-index: 1;
+    height: calc(var(--upgrade-size) * 2.2);
 
-    animation-name: clockwise;
-    animation-duration: 25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    background-color: purple;
 }
 
-#cookie-button:hover {
-    height: 52vmin;
-    width: 52vmin;
-}
-
-@keyframes clockwise {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+#upgrade-square-1,
+#upgrade-square-2,
+#upgrade-square-3,
+#upgrade-square-4,
+#upgrade-square-5,
+#upgrade-square-6,
+#upgrade-square-7,
+#upgrade-square-8,
+#upgrade-square-9,
+#upgrade-square-10
+ {
+    display: inline-block;
+    width: var(--upgrade-size);
+    height: var(--upgrade-size);
+    border: 2px solid black;
 }
