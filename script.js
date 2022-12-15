@@ -78,61 +78,61 @@ document.getElementById("just-fucking-do-it-heading").style.color = "red";
 
 // Initializing the upgrades images, such as the pictures of grandmas and factories
 let imgAutoBakersUpgrade = document.createElement("img");
-imgAutoBakersUpgrade.src = "upgradesImages/autoBakers.jpg";
+imgAutoBakersUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/autoBakersUpgradeButtonGrayedOut.png";
 imgAutoBakersUpgrade.width = 70;
 imgAutoBakersUpgrade.height = 70;
 document.getElementById("upgrade-square-1").appendChild(imgAutoBakersUpgrade);
 
 let imgGrandmaUpgrade = document.createElement("img");
-imgGrandmaUpgrade.src = "upgradesImages/grandmaUpgrade.jpg";
+imgGrandmaUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/grandmasUpgradeButtonGrayedOut.png";
 imgGrandmaUpgrade.width = 70;
 imgGrandmaUpgrade.height = 70;
 document.getElementById("upgrade-square-2").appendChild(imgGrandmaUpgrade);
 
 let imgCookieFarmsUpgrade = document.createElement("img");
-imgCookieFarmsUpgrade.src = "upgradesImages/cookieFarm.jpg";
+imgCookieFarmsUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieFarmsUpgradeButtonGrayedOut.png";
 imgCookieFarmsUpgrade.width = 70;
 imgCookieFarmsUpgrade.height = 70;
 document.getElementById("upgrade-square-3").appendChild(imgCookieFarmsUpgrade);
 
 let imgGrandmaUpgrade2 = document.createElement("img");
-imgGrandmaUpgrade2.src = "upgradesImages/grandmaUpgrade2.jpg";
+imgGrandmaUpgrade2.src = "upgradesImages/upgradesImagesGrayedOut/grandmasUpgradeButton2GrayedOut.png";
 imgGrandmaUpgrade2.width = 70;
 imgGrandmaUpgrade2.height = 70;
 document.getElementById("upgrade-square-4").appendChild(imgGrandmaUpgrade2);
 
 let imgCookieMinesUpgrade = document.createElement("img");
-imgCookieMinesUpgrade.src = "upgradesImages/cookieMines.jpg";
+imgCookieMinesUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieMinesUpgradeButtonGrayedOut.png";
 imgCookieMinesUpgrade.width = 70;
 imgCookieMinesUpgrade.height = 70;
 document.getElementById("upgrade-square-5").appendChild(imgCookieMinesUpgrade);
 
 let imgCookieFactoriesUpgrade = document.createElement("img");
-imgCookieFactoriesUpgrade.src = "upgradesImages/cookieFactory.jpg";
+imgCookieFactoriesUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieFactoriesUpgradeButtonGrayedOut.png";
 imgCookieFactoriesUpgrade.width = 70;
 imgCookieFactoriesUpgrade.height = 70;
 document.getElementById("upgrade-square-6").appendChild(imgCookieFactoriesUpgrade);
 
 let imgCookieBankUpgrade = document.createElement("img");
-imgCookieBankUpgrade.src = "upgradesImages/cookieBank.jpg";
+imgCookieBankUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieBanksUpgradeButtonGrayedOut.png";
 imgCookieBankUpgrade.width = 70;
 imgCookieBankUpgrade.height = 70;
 document.getElementById("upgrade-square-7").appendChild(imgCookieBankUpgrade);
 
 let imgCookieTempleUpgrade = document.createElement("img");
-imgCookieTempleUpgrade.src = "upgradesImages/cookieTemple.jpg";
+imgCookieTempleUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieTemplesUpgradeButtonGrayedOut.png";
 imgCookieTempleUpgrade.width = 70;
 imgCookieTempleUpgrade.height = 70;
 document.getElementById("upgrade-square-8").appendChild(imgCookieTempleUpgrade);
 
 let imgWizardTowerUpgrade = document.createElement("img");
-imgWizardTowerUpgrade.src = "upgradesImages/wizardTower.jpg";
+imgWizardTowerUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/wizardTowersUpgradeButtonGrayedOut.png";
 imgWizardTowerUpgrade.width = 70;
 imgWizardTowerUpgrade.height = 70;
 document.getElementById("upgrade-square-9").appendChild(imgWizardTowerUpgrade);
 
 let imgJustFuckingDoItUpgrade = document.createElement("img");
-imgJustFuckingDoItUpgrade.src = "upgradesImages/justFuckingDoIt.jpg";
+imgJustFuckingDoItUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/justFuckingDoItUpgradeButtonGrayedOut.png";
 imgJustFuckingDoItUpgrade.width = 70;
 imgJustFuckingDoItUpgrade.height = 70;
 document.getElementById("upgrade-square-10").appendChild(imgJustFuckingDoItUpgrade);
@@ -160,6 +160,18 @@ let cookieTemplesOneTimeUpgradePrice = 80000;
 let cookieWizardTowersOneTimeUpgradePrice = 90000;
 let justFuckingDoItOneTimeUpgradePrice = 100000;
 
+// Boolean gates for one-time upgrades
+let autoBakersUpgradeGateOpen = true;
+let grandmasUpgradeGateOpen = true;
+let cookieFarmsUpgradeGateOpen = true;
+let grandmasUpgrade2GateOpen = true;
+let cookieMinesUpgradeGateOpen = true;
+let cookieFactoriesUpgradeGateOpen = true;
+let cookieBanksUpgradeGateOpen = true;
+let cookieTemplesUpgradeGateOpen = true;
+let wizardTowersUpgradeGateOpen = true;
+let justFuckingDoItUpgradeGateOpen = true;
+
 
 // Event listener for the non-automatic cookie button (the one that the player can click a lot if they want)
 cookieButton.addEventListener("click", function() {
@@ -169,82 +181,82 @@ cookieButton.addEventListener("click", function() {
 
 // Event listeners for the one-time upgrades
 autoBakersOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${autoBakersOneTimeUpgradePrice}`) {
+    if(cookies >= `${autoBakersOneTimeUpgradePrice}` && autoBakersUpgradeGateOpen == true) {
         cookies -= `${autoBakersOneTimeUpgradePrice}`;
         autoBakersOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        autoBakersUpgradeGateOpen = false;
     }
 });
 
 grandmasOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${grandmasOneTimeUpgradePrice}`) {
+    if(cookies >= `${grandmasOneTimeUpgradePrice}` && grandmasUpgradeGateOpen == true) {
         cookies -= `${grandmasOneTimeUpgradePrice}`;
         grandmasOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        grandmasUpgradeGateOpen = false;
     }
 });
 
 cookieFarmsOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieFarmsOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieFarmsOneTimeUpgradePrice}` && cookieFarmsUpgradeGateOpen == true) {
         cookies -= `${cookieFarmsOneTimeUpgradePrice}`;
         cookieFarmsOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        cookieFarmsUpgradeGateOpen = false;
     }
 });
 
 grandmasOneTimeUpgradeButton2.addEventListener("click", () => {
-    if(cookies >= `${grandmasOneTimeUpgrade2Price}`) {
+    if(cookies >= `${grandmasOneTimeUpgrade2Price}` && grandmasUpgrade2GateOpen == true) {
         cookies -= `${grandmasOneTimeUpgrade2Price}`;
         grandmasOneTimeUpgrade2Multiplier = 4;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        grandmasUpgrade2GateOpen = false;
     }
 });
 
 cookieMinesOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieMinesOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieMinesOneTimeUpgradePrice}` && cookieMinesUpgradeGateOpen == true) {
         cookies -= `${cookieMinesOneTimeUpgradePrice}`;
         cookieMinesOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        cookieMinesUpgradeGateOpen = false;
     }
 });
 
 cookieFactoriesOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieFactoriesOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieFactoriesOneTimeUpgradePrice}` && cookieFactoriesUpgradeGateOpen == true) {
         cookies -= `${cookieFactoriesOneTimeUpgradePrice}`;
         cookieFactoriesOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        cookieFactoriesUpgradeGateOpen = false;
     }
 });
 
 cookieBanksOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieBanksOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieBanksOneTimeUpgradePrice}` && cookieBanksUpgradeGateOpen == true) {
         cookies -= `${cookieBanksOneTimeUpgradePrice}`;
         cookieBanksOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        cookieBanksUpgradeGateOpen = false;
     }
 });
 
 cookieTemplesOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieTemplesOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieTemplesOneTimeUpgradePrice}` && cookieTemplesUpgradeGateOpen == true) {
         cookies -= `${cookieTemplesOneTimeUpgradePrice}`;
         cookieTemplesOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        cookieTemplesUpgradeGateOpen = false;
     }
 });
 
 cookieWizardTowersOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${cookieWizardTowersOneTimeUpgradePrice}`) {
+    if(cookies >= `${cookieWizardTowersOneTimeUpgradePrice}` && wizardTowersUpgradeGateOpen == true) {
         cookies -= `${cookieWizardTowersOneTimeUpgradePrice}`;
         cookieWizardTowersOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        wizardTowersUpgradeGateOpen = false;
     }
 });
 
 justFuckingDoItOneTimeUpgradeButton.addEventListener("click", () => {
-    if(cookies >= `${justFuckingDoItOneTimeUpgradePrice}`) {
+    if(cookies >= `${justFuckingDoItOneTimeUpgradePrice}` && justFuckingDoItUpgradeGateOpen == true) {
         cookies -= `${justFuckingDoItOneTimeUpgradePrice}`;
         justFuckingDoItOneTimeUpgradeMultiplier = 2;
-       // and then add an attribute of unselectable to the DOM element of <div id="upgrade-square-1"></div>
+        justFuckingDoItUpgradeGateOpen = false;
     }
 });
 
@@ -350,6 +362,7 @@ window.setInterval(function() {
     wizardTowersHeading.innerHTML = `Wizard Towers: ${wizardTowersAmount}`;
     justFuckingDoItHeading.innerHTML = `Just Fucking Do It: ${justFuckingDoItAmount}`;
 
+    // the "text red or green dependent on if you can afford the purchase" checker:
     if(cookies >= `${autoBakersPrice}`) {
         document.getElementById("auto-bakers-heading").style.color = "lime";
     } else {
@@ -402,6 +415,67 @@ window.setInterval(function() {
         document.getElementById("just-fucking-do-it-heading").style.color = "lime";
     } else {
         document.getElementById("just-fucking-do-it-heading").style.color = "red";
+    }
+
+    // the grayed-out-or-not checker for the upgrade images:
+    if(cookies >= `${autoBakersOneTimeUpgradePrice}` && autoBakersUpgradeGateOpen == true) {
+        imgAutoBakersUpgrade.src = "upgradesImages/autoBakers.jpg";
+    } else {
+        imgAutoBakersUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/autoBakersUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${grandmasOneTimeUpgradePrice}` && grandmasUpgradeGateOpen == true) {
+        imgGrandmaUpgrade.src = "upgradesImages/grandmaUpgrade.jpg";
+    } else {
+        imgGrandmaUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/grandmasUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${cookieFarmsOneTimeUpgradePrice}` && cookieFarmsUpgradeGateOpen == true) {
+        imgCookieFarmsUpgrade.src = "upgradesImages/cookieFarm.jpg";
+    } else {
+        imgCookieFarmsUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieFarmsUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${grandmasOneTimeUpgrade2Price}` && grandmasUpgrade2GateOpen == true) {
+        imgGrandmaUpgrade2.src = "upgradesImages/grandmaUpgrade2.jpg";
+    } else {
+        imgGrandmaUpgrade2.src = "upgradesImages/upgradesImagesGrayedOut/grandmasUpgradeButton2GrayedOut.png";
+    }
+
+    if(cookies >= `${cookieMinesOneTimeUpgradePrice}` && cookieMinesUpgradeGateOpen == true) {
+        imgCookieMinesUpgrade.src = "upgradesImages/cookieMines.jpg";
+    } else {
+        imgCookieMinesUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieMinesUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${cookieFactoriesOneTimeUpgradePrice}` && cookieFactoriesUpgradeGateOpen == true) {
+        imgCookieFactoriesUpgrade.src = "upgradesImages/cookieFactory.jpg";
+    } else {
+        imgCookieFactoriesUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieFactoriesUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${cookieBanksOneTimeUpgradePrice}` && cookieBanksUpgradeGateOpen == true) {
+        imgCookieBankUpgrade.src = "upgradesImages/cookieBank.jpg";
+    } else {
+        imgCookieBankUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieBanksUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${cookieTemplesOneTimeUpgradePrice}` && cookieTemplesUpgradeGateOpen == true) {
+        imgCookieTempleUpgrade.src = "upgradesImages/cookieTemple.jpg";
+    } else {
+        imgCookieTempleUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/cookieTemplesUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${cookieWizardTowersOneTimeUpgradePrice}` && wizardTowersUpgradeGateOpen == true) {
+        imgWizardTowerUpgrade.src = "upgradesImages/wizardTower.jpg";
+    } else {
+        imgWizardTowerUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/wizardTowersUpgradeButtonGrayedOut.png";
+    }
+
+    if(cookies >= `${justFuckingDoItOneTimeUpgradePrice}` && justFuckingDoItUpgradeGateOpen == true) {
+        imgJustFuckingDoItUpgrade.src = "upgradesImages/justFuckingDoIt.jpg";
+    } else {
+        imgJustFuckingDoItUpgrade.src = "upgradesImages/upgradesImagesGrayedOut/justFuckingDoItUpgradeButtonGrayedOut.png";
     }
 }, 250);
 
