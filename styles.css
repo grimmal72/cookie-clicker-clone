@@ -92,6 +92,13 @@ body {
     width: 45%;
 }
 
+#second-column > * {
+    height: 30vh;
+    width: 100%;
+    background-color: purple;
+    border: 2px solid black;
+}
+
 #third-column {
     display: flex;
     justify-content: space-between;
@@ -163,4 +170,5 @@ body {
     width: var(--upgrade-size);
     height: var(--upgrade-size);
     border: 2px solid black;
+    cursor: pointer;
 }
