@@ -22,6 +22,8 @@ const cookieTemplesButton = document.querySelector(".cookie-temples-button");
 
 const wizardTowersHeading = document.querySelector("#wizard-towers-heading");
 const wizardTowersButton = document.querySelector(".wizard-towers-button");
+const justFuckingDoItHeading = document.querySelector("#just-fucking-do-it-heading");
+const justFuckingDoItButton = document.querySelector(".just-fucking-do-it-button");
 
 // Accessing the DOM elements of the one-time upgrades
 const autoBakersOneTimeUpgradeButton = document.querySelector("#upgrade-square-1");
@@ -61,6 +63,7 @@ let cookieFactoriesAmount = 0;
 let cookieBanksAmount = 0;
 let cookieTemplesAmount = 0;
 let wizardTowersAmount = 0;
+let justFuckingDoItAmount = 0;
 
 // Setting the store compounders to red font-style and grayed out button initially to imply that we can't buy the compounders.
 document.getElementById("auto-bakers-heading").style.color = "red"; // the red text
@@ -71,6 +74,7 @@ document.getElementById("cookie-factories-heading").style.color = "red";
 document.getElementById("cookie-banks-heading").style.color = "red";
 document.getElementById("cookie-temples-heading").style.color = "red";
 document.getElementById("wizard-towers-heading").style.color = "red";
+document.getElementById("just-fucking-do-it-heading").style.color = "red";
 
 // Initializing the upgrades images, such as the pictures of grandmas and factories
 let imgAutoBakersUpgrade = document.createElement("img");
@@ -142,6 +146,7 @@ let cookieFactoriesPrice = 5000;
 let cookieBanksPrice = 10000;
 let cookieTemplesPrice = 100000;
 let wizardTowersPrice = 1000000;
+let justFuckingDoItPrice = 1000000000
 
 // Purchase prices for one-time upgrades - these will use template literal placeholder variables
 let autoBakersOneTimeUpgradePrice = 10000;
@@ -161,8 +166,6 @@ cookieButton.addEventListener("click", function() {
     cookies += 1;
     cookieHeading.innerHTML = `Cookies: ${cookies}`;
 });
-
-let autoBakersCPS = 1; // come back to this after setting up upgrades divs. i'm going to use a template literal on autoBakerButton right after that. it will look like `cookiesPerSecond += 1 * ${upgradesMultiplier}` or `cookiesPerSecond += 1000 * ${upgradesMultiplier}`, where the CPM of 1 belongs to the autobakers and the CPM of 1000 belongs to the factories
 
 // Event listeners for the one-time upgrades
 autoBakersOneTimeUpgradeButton.addEventListener("click", () => {
@@ -312,9 +315,18 @@ cookieTemplesButton.addEventListener("click", () => {
 wizardTowersButton.addEventListener("click", () => {
     if(cookies >= `${wizardTowersPrice}`) {
         cookies -= `${wizardTowersPrice}`;
-        cookiesPerSecond += (10000 * `${cookieWizardTowersOneTimeUpgradeMultiplier}`);
+        cookiesPerSecond += (100000 * `${cookieWizardTowersOneTimeUpgradeMultiplier}`);
         wizardTowersAmount += 1;
         document.getElementById("wizard-towers-heading").style.color = "green";
+    }
+});
+
+justFuckingDoItButton.addEventListener("click", () => {
+    if(cookies >= `${justFuckingDoItPrice}`) {
+        cookies -= `${justFuckingDoItPrice}`;
+        cookiesPerSecond += (10000000 * `${justFuckingDoItOneTimeUpgradeMultiplier}`);
+        justFuckingDoItAmount += 1;
+        document.getElementById("just-fucking-do-it-heading").style.color = "green";
     }
 });
 
@@ -336,6 +348,7 @@ window.setInterval(function() {
     cookieBanksHeading.innerHTML = `Cookie Banks: ${cookieBanksAmount}`;
     cookieTemplesHeading.innerHTML = `Cookie Temples: ${cookieTemplesAmount}`;
     wizardTowersHeading.innerHTML = `Wizard Towers: ${wizardTowersAmount}`;
+    justFuckingDoItHeading.innerHTML = `Just Fucking Do It: ${justFuckingDoItAmount}`;
 
     if(cookies >= `${autoBakersPrice}`) {
         document.getElementById("auto-bakers-heading").style.color = "lime";
@@ -383,6 +396,12 @@ window.setInterval(function() {
         document.getElementById("wizard-towers-heading").style.color = "lime";
     } else {
         document.getElementById("wizard-towers-heading").style.color = "red";
+    }
+
+    if(cookies >= `${justFuckingDoItPrice}`) {
+        document.getElementById("just-fucking-do-it-heading").style.color = "lime";
+    } else {
+        document.getElementById("just-fucking-do-it-heading").style.color = "red";
     }
 }, 250);
 
